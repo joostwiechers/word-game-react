@@ -4,7 +4,7 @@ import React, {useEffect, useState} from 'react'
 import words from '../words'
 import WordleGrid from './WordleGrid'
 
-const Wordle = ({maxAttempts = 1, wordLength = 5}) => {
+const Wordle = ({maxAttempts = 6, wordLength = 5}) => {
 
     // Get random word.
     const [word] = useState(words[wordLength]?.[Math.floor(Math.random() * words[wordLength]?.length)] || null)
