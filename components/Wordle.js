@@ -47,7 +47,7 @@ const Wordle = ({maxAttempts = 6, wordLength = 5}) => {
     }
 
     if (!word) {
-        return <div>Er is iets fout gegaan</div>
+        return <div>Something went wrong.</div>
     }
 
     return (
