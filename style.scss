@@ -17,12 +17,47 @@ body {
 }
 
 .wordle {
-  width: 100%;
+  width: max-content;
   margin: 0 auto;
 
   &__grid {
     width: max-content;
     margin: 0 auto;
+  }
+}
+
+.keyboard {
+  width: max-content;
+  margin: 0 auto;
+
+  &__row {
+    display: flex;
+    justify-content: center;
+    gap: 0.3rem;
+    margin-bottom: 0.3rem;
+  }
+
+  &__key {
+    display: inline-block;
+    border-radius: var(--default-border-radius);
+    background-color: white;
+    color: black;
+    width: 1rem;
+    padding: 0.5rem;
+    text-align: center;
+    font-weight: bold;
+
+    &--correct {
+      background: var(--success-color);
+    }
+
+    &--misplaced {
+      background: var(--notice-color);
+    }
+
+    &--incorrect {
+      background: var(--incorrect-color);
+    }
   }
 }
 

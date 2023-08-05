@@ -3,6 +3,7 @@ import React, {useEffect, useState} from 'react'
 // Import the words.
 import words from '../words'
 import WordleGrid from './WordleGrid'
+import Keyboard from './Keyboard'
 
 const Wordle = ({maxAttempts = 6, wordLength = 5}) => {
 
@@ -26,7 +27,7 @@ const Wordle = ({maxAttempts = 6, wordLength = 5}) => {
     // Give the cheater some help.
     useEffect(() => {
         console.log(`Cheater! The word is ${word}`)
-    })
+    }, [word])
 
     const checkAttempt = e => {
         e.preventDefault()
@@ -54,8 +55,11 @@ const Wordle = ({maxAttempts = 6, wordLength = 5}) => {
         <form className="wordle" onSubmit={checkAttempt}>
             <h1>Wordle</h1>
 
-            {exhaustedAttempts && !wordGuessed && <div className="notification notification--error">Failed!</div>}
-            {wordGuessed && <div className="notification notification--success">Won!</div>}
+            {exhaustedAttempts && !wordGuessed &&
+                <div className="notification notification--error">You failed to guess the word!</div>
+            }
+
+            {wordGuessed && <div className="notification notification--success">You guessed the word!</div>}
 
             <WordleGrid word={word} maxAttempts={maxAttempts} attempts={attempts} />
 
@@ -65,6 +69,8 @@ const Wordle = ({maxAttempts = 6, wordLength = 5}) => {
                        autoFocus
                        onChange={e => setCurrentAttempt(e.target.value)} />
             }
+
+            <Keyboard attempts={attempts} word={word} />
         </form>
     )
 }
