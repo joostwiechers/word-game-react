@@ -56,7 +56,7 @@ const Wordle = ({maxAttempts = 6, wordLength = 5}) => {
             <h1>Wordle</h1>
 
             {exhaustedAttempts && !wordGuessed &&
-                <div className="notification notification--error">You failed to guess the word!</div>
+                <div className="notification notification--error">You failed to guess the word! ({word})</div>
             }
 
             {wordGuessed && <div className="notification notification--success">You guessed the word!</div>}
