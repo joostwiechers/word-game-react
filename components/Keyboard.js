@@ -1,6 +1,6 @@
 import React, {useMemo} from 'react'
 
-const Keyboard = ({word, attempts}) => {
+const Keyboard = ({word, attempts, setCurrentAttempt}) => {
     // Define keys on the keyboard.
     const keyboardKeys = [
         ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
@@ -40,7 +40,10 @@ const Keyboard = ({word, attempts}) => {
             {keyboardKeys.map((row, index) =>
                 <div className="keyboard__row" key={index}>
                     {row.map(key =>
-                        <div key={key} className={['keyboard__key', getKeyColor(key)].join(' ')}>{key}</div>
+                        <div key={key}
+                             className={['keyboard__key', getKeyColor(key)].join(' ')}>
+                            {key}
+                        </div>
                     )}
                 </div>
             )}

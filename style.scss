@@ -19,22 +19,61 @@ body {
 .wordle {
   width: max-content;
   margin: 0 auto;
+}
 
-  &__grid {
-    width: max-content;
-    margin: 0 auto;
+.word-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  width: min-content;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+
+  &__row {
+    display: flex;
+    gap: inherit;
+    width: 100%;
+    justify-content: stretch;
+  }
+
+  &__cell {
+    background: white;
+    color: black;
+    width: 4rem;
+    height: 4rem;
+    display: inline-block;
+    text-align: center;
+    line-height: 4rem;
+    font-size: 2rem;
+    text-transform: uppercase;
+    border-radius: var(--default-border-radius);
+
+    &--correct {
+      background-color: var(--success-color);
+    }
+
+    &--misplaced {
+      background-color: var(--notice-color);
+    }
+
+    &--incorrect {
+      background-color: var(--incorrect-color);
+    }
   }
 }
 
 .keyboard {
-  width: max-content;
+  display: flex;
+  width: min-content;
   margin: 0 auto;
+  gap: 0.3rem;
+  flex-wrap: wrap;
 
   &__row {
     display: flex;
+    width: 100%;
     justify-content: center;
-    gap: 0.3rem;
-    margin-bottom: 0.3rem;
+    gap: inherit;
   }
 
   &__key {
@@ -61,39 +100,6 @@ body {
   }
 }
 
-.row {
-  display: flex;
-  gap: 0.3rem;
-  width: 100%;
-  justify-content: stretch;
-  margin: 0 auto 0.3rem;
-}
-
-.cell {
-  background: white;
-  color: black;
-  width: 4rem;
-  height: 4rem;
-  display: inline-block;
-  text-align: center;
-  line-height: 4rem;
-  font-size: 2rem;
-  text-transform: uppercase;
-  border-radius: var(--default-border-radius);
-
-  &--correct {
-    background-color: var(--success-color);
-  }
-
-  &--misplaced {
-    background-color: var(--notice-color);
-  }
-
-  &--incorrect {
-    background-color: var(--incorrect-color);
-  }
-}
-
 .notification {
   border-radius: var(--default-border-radius);
   font-size: 1rem;
@@ -112,14 +118,15 @@ body {
 }
 
 input {
-  width: 4rem * 5 + (0.3rem * 4);
+  width: 100%;
   height: 4rem;
   font-size: 2rem;
   border: 0;
   padding: 0;
   display: block;
-  margin: 2rem auto;
+  margin: 0 auto;
   border-radius: var(--default-border-radius);
+  margin-bottom: 1rem;
 }
 
 h1 {

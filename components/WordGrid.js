@@ -1,31 +1,38 @@
 import React from 'react'
 
-const WordleGrid = ({maxAttempts, word, attempts}) => {
+const WordGrid = ({maxAttempts, word, attempts, currentAttempt}) => {
 
-    const renderWord = (attempt) => {
+    const renderWord = (attempt, row) => {
         const letters = []
+
         // Loop over the word's letters.
         for (let i = 0; i < word.length; i++) {
-            const letter = attempt?.[i]
-            let classes = ['cell']
+            let letter = attempt?.[i]
+            let classes = ['word-grid__cell']
 
             // Letter is correct.
             if (word?.[i] === letter) {
-                classes.push('cell--correct')
+                classes.push('word-grid__cell--correct')
             }
 
             // Letter is somewhere else in the word.
             if (word.includes(letter) && word?.[i] !== letter) {
-                classes.push('cell--misplaced')
+                classes.push('word-grid__cell--misplaced')
             }
 
             // Letter does not exist in the word.
             if (letter && !word.includes(letter)) {
-                classes.push('cell--incorrect')
+                classes.push('word-grid__cell--incorrect')
+            }
+
+            // If first empty row, show current attempt.
+            if (!letter && row === attempts.length) {
+                letter = currentAttempt[i]
             }
 
             letters.push(<div key={i} className={classes.join(' ')}>{letter}</div>)
         }
+
         return letters
     }
 
@@ -33,17 +40,17 @@ const WordleGrid = ({maxAttempts, word, attempts}) => {
     const grid = []
     for (let i = 0; i < maxAttempts; i++) {
         grid.push(
-            <div className="row" key={i}>
-                {renderWord(attempts[i])}
+            <div className="word-grid__row" key={i}>
+                {renderWord(attempts[i], i)}
             </div>
         )
     }
 
     return (
-        <div className="wordle__grid">
+        <div className="word-grid">
             {grid}
         </div>
     )
 }
 
-export default WordleGrid
+export default WordGrid

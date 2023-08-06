@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 
 // Import the words.
 import words from '../words'
-import WordleGrid from './WordleGrid'
+import WordGrid from './WordGrid'
 import Keyboard from './Keyboard'
 
 const Wordle = ({maxAttempts = 6, wordLength = 5}) => {
@@ -61,7 +61,7 @@ const Wordle = ({maxAttempts = 6, wordLength = 5}) => {
 
             {wordGuessed && <div className="notification notification--success">You guessed the word!</div>}
 
-            <WordleGrid word={word} maxAttempts={maxAttempts} attempts={attempts} />
+            <WordGrid word={word} maxAttempts={maxAttempts} attempts={attempts} currentAttempt={currentAttempt} />
 
             {!wordGuessed && !exhaustedAttempts &&
                 <input type="text"
