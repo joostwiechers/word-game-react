@@ -40,7 +40,10 @@ const Keyboard = ({word, attempts}) => {
             {keyboardKeys.map((row, index) =>
                 <div className="keyboard__row" key={index}>
                     {row.map(key =>
-                        <div key={key} className={['keyboard__key', getKeyColor(key)].join(' ')}>{key}</div>
+                        <div key={key}
+                             className={['keyboard__key', getKeyColor(key)].join(' ')}>
+                            {key}
+                        </div>
                     )}
                 </div>
             )}

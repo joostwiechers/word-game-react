@@ -19,33 +19,72 @@ body {
 .wordle {
   width: max-content;
   margin: 0 auto;
+}
 
-  &__grid {
-    width: max-content;
-    margin: 0 auto;
+.word-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  width: min-content;
+  margin: 1rem auto;
+  font-weight: bold;
+
+  &__word {
+    display: flex;
+    gap: inherit;
+    width: 100%;
+    justify-content: stretch;
+  }
+
+  &__letter {
+    background: #FAF9F6;
+    color: black;
+    width: 4rem;
+    height: 4rem;
+    display: inline-block;
+    text-align: center;
+    line-height: 4rem;
+    font-size: 2rem;
+    text-transform: uppercase;
+    border-radius: var(--default-border-radius);
+
+    &--correct {
+      background-color: var(--success-color);
+    }
+
+    &--misplaced {
+      background-color: var(--notice-color);
+    }
+
+    &--incorrect {
+      background-color: var(--incorrect-color);
+    }
   }
 }
 
 .keyboard {
-  width: max-content;
+  display: flex;
+  width: min-content;
   margin: 0 auto;
+  gap: 0.3rem;
+  flex-wrap: wrap;
 
   &__row {
     display: flex;
+    width: 100%;
     justify-content: center;
-    gap: 0.3rem;
-    margin-bottom: 0.3rem;
+    gap: inherit;
   }
 
   &__key {
     display: inline-block;
     border-radius: var(--default-border-radius);
-    background-color: white;
+    background-color: #FAF9F6;
     color: black;
-    width: 1rem;
     padding: 0.5rem;
     text-align: center;
     font-weight: bold;
+    border: 0;
 
     &--correct {
       background: var(--success-color);
@@ -58,39 +97,6 @@ body {
     &--incorrect {
       background: var(--incorrect-color);
     }
-  }
-}
-
-.row {
-  display: flex;
-  gap: 0.3rem;
-  width: 100%;
-  justify-content: stretch;
-  margin: 0 auto 0.3rem;
-}
-
-.cell {
-  background: white;
-  color: black;
-  width: 4rem;
-  height: 4rem;
-  display: inline-block;
-  text-align: center;
-  line-height: 4rem;
-  font-size: 2rem;
-  text-transform: uppercase;
-  border-radius: var(--default-border-radius);
-
-  &--correct {
-    background-color: var(--success-color);
-  }
-
-  &--misplaced {
-    background-color: var(--notice-color);
-  }
-
-  &--incorrect {
-    background-color: var(--incorrect-color);
   }
 }
 
@@ -112,14 +118,14 @@ body {
 }
 
 input {
-  width: 4rem * 5 + (0.3rem * 4);
   height: 4rem;
+  background: #FAF9F6;
   font-size: 2rem;
   border: 0;
-  padding: 0;
+  padding: 0 1rem;
   display: block;
-  margin: 2rem auto;
   border-radius: var(--default-border-radius);
+  margin: 0 auto 1rem;
 }
 
 h1 {
