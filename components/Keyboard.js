@@ -1,6 +1,6 @@
 import React, {useMemo} from 'react'
 
-const Keyboard = ({word, attempts, setCurrentAttempt}) => {
+const Keyboard = ({word, attempts}) => {
     // Define keys on the keyboard.
     const keyboardKeys = [
         ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],

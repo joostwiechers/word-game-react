@@ -26,18 +26,18 @@ body {
   flex-wrap: wrap;
   gap: 0.4rem;
   width: min-content;
-  margin: 0 auto;
-  margin-bottom: 1rem;
+  margin: 1rem auto;
+  font-weight: bold;
 
-  &__row {
+  &__word {
     display: flex;
     gap: inherit;
     width: 100%;
     justify-content: stretch;
   }
 
-  &__cell {
-    background: white;
+  &__letter {
+    background: #FAF9F6;
     color: black;
     width: 4rem;
     height: 4rem;
@@ -79,12 +79,12 @@ body {
   &__key {
     display: inline-block;
     border-radius: var(--default-border-radius);
-    background-color: white;
+    background-color: #FAF9F6;
     color: black;
-    width: 1rem;
     padding: 0.5rem;
     text-align: center;
     font-weight: bold;
+    border: 0;
 
     &--correct {
       background: var(--success-color);
@@ -118,15 +118,14 @@ body {
 }
 
 input {
-  width: 100%;
   height: 4rem;
+  background: #FAF9F6;
   font-size: 2rem;
   border: 0;
-  padding: 0;
+  padding: 0 1rem;
   display: block;
-  margin: 0 auto;
   border-radius: var(--default-border-radius);
-  margin-bottom: 1rem;
+  margin: 0 auto 1rem;
 }
 
 h1 {

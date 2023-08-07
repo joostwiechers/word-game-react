@@ -8,21 +8,21 @@ const WordGrid = ({maxAttempts, word, attempts, currentAttempt}) => {
         // Loop over the word's letters.
         for (let i = 0; i < word.length; i++) {
             let letter = attempt?.[i]
-            let classes = ['word-grid__cell']
+            let classes = ['word-grid__letter']
 
             // Letter is correct.
             if (word?.[i] === letter) {
-                classes.push('word-grid__cell--correct')
+                classes.push('word-grid__letter--correct')
             }
 
             // Letter is somewhere else in the word.
             if (word.includes(letter) && word?.[i] !== letter) {
-                classes.push('word-grid__cell--misplaced')
+                classes.push('word-grid__letter--misplaced')
             }
 
             // Letter does not exist in the word.
             if (letter && !word.includes(letter)) {
-                classes.push('word-grid__cell--incorrect')
+                classes.push('word-grid__letter--incorrect')
             }
 
             // If first empty row, show current attempt.
@@ -40,7 +40,7 @@ const WordGrid = ({maxAttempts, word, attempts, currentAttempt}) => {
     const grid = []
     for (let i = 0; i < maxAttempts; i++) {
         grid.push(
-            <div className="word-grid__row" key={i}>
+            <div className="word-grid__word" key={i}>
                 {renderWord(attempts[i], i)}
             </div>
         )

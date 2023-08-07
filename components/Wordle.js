@@ -43,7 +43,6 @@ const Wordle = ({maxAttempts = 6, wordLength = 5}) => {
         }
 
         setAttempts([...attempts, currentAttempt])
-
         setCurrentAttempt('')
     }
 
@@ -53,7 +52,6 @@ const Wordle = ({maxAttempts = 6, wordLength = 5}) => {
 
     return (
         <form className="wordle" onSubmit={checkAttempt}>
-            <h1>Wordle</h1>
 
             {exhaustedAttempts && !wordGuessed &&
                 <div className="notification notification--error">You failed to guess the word! ({word})</div>
@@ -67,10 +65,12 @@ const Wordle = ({maxAttempts = 6, wordLength = 5}) => {
                 <input type="text"
                        value={currentAttempt}
                        autoFocus
-                       onChange={e => setCurrentAttempt(e.target.value)} />
+                       maxLength={wordLength}
+                       onChange={e => e.target.value.length <= wordLength && setCurrentAttempt(e.target.value)} />
             }
 
-            <Keyboard attempts={attempts} word={word} />
+            <Keyboard attempts={attempts} word={word} setCurrentAttempt={setCurrentAttempt}
+                      currentAttempt={currentAttempt} />
         </form>
     )
 }
