@@ -1,24 +1,25 @@
 :root {
   --default-border-radius: 0.5rem;
+  --default-color: #FAF9F6;
+  --default-dark-color: #111;
+
   --success-color: #55efc4;
   --notice-color: #fdcb6e;
   --error-color: #ff7675;
   --incorrect-color: #636e72;
+
+
+  --background-transition: background-color .5s;
 }
 
 body {
-  background: #111;
-  color: white;
+  background: var(--default-dark-color);
+  color: var(--default-color);
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   font-size: 16px;
   font-family: system-ui;
-}
-
-.wordle {
-  width: max-content;
-  margin: 0 auto;
 }
 
 .word-grid {
@@ -37,8 +38,8 @@ body {
   }
 
   &__letter {
-    background: #FAF9F6;
-    color: black;
+    background: var(--default-color);
+    color: var(--default-dark-color);
     width: 4rem;
     height: 4rem;
     display: inline-block;
@@ -50,14 +51,17 @@ body {
 
     &--correct {
       background-color: var(--success-color);
+      transition: var(--background-transition);
     }
 
     &--misplaced {
       background-color: var(--notice-color);
+      transition: var(--background-transition);
     }
 
     &--incorrect {
       background-color: var(--incorrect-color);
+      transition: var(--background-transition);
     }
   }
 }
@@ -65,7 +69,7 @@ body {
 .keyboard {
   display: flex;
   width: min-content;
-  margin: 0 auto;
+  margin: 1rem auto;
   gap: 0.3rem;
   flex-wrap: wrap;
 
@@ -79,8 +83,8 @@ body {
   &__key {
     display: inline-block;
     border-radius: var(--default-border-radius);
-    background-color: #FAF9F6;
-    color: black;
+    background-color: var(--default-color);
+    color: var(--default-dark-color);
     padding: 0.5rem;
     text-align: center;
     font-weight: bold;
@@ -88,14 +92,17 @@ body {
 
     &--correct {
       background: var(--success-color);
+      transition: var(--background-transition);
     }
 
     &--misplaced {
       background: var(--notice-color);
+      transition: var(--background-transition);
     }
 
     &--incorrect {
       background: var(--incorrect-color);
+      transition: var(--background-transition);
     }
   }
 }
@@ -106,6 +113,8 @@ body {
   width: 4rem * 5 + (0.3rem * 4) - 2rem;
   padding: 1rem;
   margin: 0 auto 2rem;
+  animation: show 500ms ease-in forwards;
+  opacity: 0;
 
   &--error {
     background: var(--error-color);
@@ -113,13 +122,13 @@ body {
 
   &--success {
     background: var(--success-color);
-    color: black;
+    color: var(--default-dark-color)
   }
 }
 
 input {
   height: 4rem;
-  background: #FAF9F6;
+  background: var(--default-color);
   font-size: 2rem;
   border: 0;
   padding: 0 1rem;
@@ -130,4 +139,11 @@ input {
 
 h1 {
   text-align: center;
+}
+
+@keyframes show {
+  100% {
+    opacity: 1;
+    transform: none;
+  }
 }
