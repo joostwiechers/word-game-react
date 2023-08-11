@@ -1,4 +1,4 @@
-# Wordle
+# Word Game (React)
 I was challenged by a colleague to make this.
 
 ## Installation
