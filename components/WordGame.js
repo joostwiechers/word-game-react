@@ -3,6 +3,7 @@ import React, {useEffect, useState} from 'react'
 import WordGrid from './WordGrid'
 import Keyboard from './Keyboard'
 import getWord from './getWord'
+import validateWord from './validateWord'
 
 /**
  *
@@ -39,7 +40,7 @@ const WordGame = ({maxAttempts = 6, wordLength = 5}) => {
         reset()
     }, [wordLength])
 
-    const checkAttempt = e => {
+    async function checkAttempt(e) {
         e.preventDefault()
 
         // Attempt length should be same as word length.
@@ -49,6 +50,10 @@ const WordGame = ({maxAttempts = 6, wordLength = 5}) => {
 
         // The word should not be guessed already.
         if (attempts.includes(currentAttempt)) {
+            return
+        }
+
+        if (await validateWord(currentAttempt).then(data => data) === false) {
             return
         }
 
