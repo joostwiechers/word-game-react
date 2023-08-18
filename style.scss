@@ -137,6 +137,16 @@ input {
   margin: 0 auto 1rem;
 }
 
+button {
+  margin: 0 auto;
+  display: block;
+  background-color: var(--default-color);
+  border: 0;
+  padding: 1rem 2rem;
+  border-radius: var(--default-border-radius);
+  cursor: pointer;
+}
+
 h1 {
   text-align: center;
 }
