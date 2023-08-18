@@ -98,8 +98,9 @@ const WordGame = ({maxAttempts = 6, wordLength = 5}) => {
                     <div className="notification notification--error">You failed to guess the word! ({word})</div>
                 }
 
-
-                {wordGuessed && <div className="notification notification--success">You guessed the word!</div>}
+                {wordGuessed &&
+                    <div className="notification notification--success">You guessed the word!</div>
+                }
             </form>
 
             <button onClick={reset}>Restart</button>
